@@ -73,17 +73,35 @@ class DioHelper {
     );
 }
 
-
- Future<List<dynamic>> getAllCharacters() async{
-    try{
-      Response response = await dio.get('characters');
-      print(response.data.toString());
-      return response.data;
-    }catch(e){
-      print(e.toString());
-      return[];
-    }
+static Future<Response> getAnnouncements() async{
+    return await dio.get(
+        Endpoints.announcement,
+      options: Options(
+        followRedirects: false,
+        validateStatus: (status){
+          return true;
+        }
+      )
+    );
 }
+
+
+
+
+
+
+
+//
+//  Future<List<dynamic>> getAllCharacters() async{
+//     try{
+//       Response response = await dio.get('characters');
+//       print(response.data.toString());
+//       return response.data;
+//     }catch(e){
+//       print(e.toString());
+//       return[];
+//     }
+// }
 
 
 

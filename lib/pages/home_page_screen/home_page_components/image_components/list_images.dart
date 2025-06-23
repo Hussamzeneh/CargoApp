@@ -2,20 +2,27 @@ import 'package:bloceproject/pages/home_page_screen/home_page_components/image_c
 import 'package:flutter/material.dart';
 
 class ListImages extends StatelessWidget {
-  const ListImages({super.key});
+  const ListImages({
+    super.key,
+    required this.images,
+  });
+
+  final List<String> images;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50 ,
-      child: ListView.separated(scrollDirection: Axis.horizontal,
-          physics: BouncingScrollPhysics(),
-          shrinkWrap: true,
-          itemBuilder: (context, index) => ImageComponent(url: "https://cdn.prod.website-files.com/654366841809b5be271c8358/659efd7c0732620f1ac6a1d6_why_flutter_is_the_future_of_app_development%20(1).webp"),
-          separatorBuilder: (context, index) => SizedBox(
-                width: 10,
-              ),
-          itemCount: 20),
+      height: 180,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        //physics: BouncingScrollPhysics(),
+        shrinkWrap: true,
+        itemBuilder: (context, index) => ImageComponent(url: images[index]),
+        separatorBuilder: (context, index) => const SizedBox(
+          width: 10,
+        ),
+        itemCount: images.length,
+      ),
     );
   }
 }
