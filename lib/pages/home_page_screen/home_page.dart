@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomePageCubit()..getAnnouncements(),
+      create: (context) => HomePageCubit(),
       child: BlocConsumer<HomePageCubit, HomePageStates>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -49,10 +49,10 @@ class HomePage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  if (state is! HomePageLoadingState)
+                  /*if (state is! HomePageLoadingState)
                     ListImages(
                       images: homepageCubitObject.announcementImages,
-                    ),
+                    ),*/
                   CurrentShipments(),
                 ],
               ),
