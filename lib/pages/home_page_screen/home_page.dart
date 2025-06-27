@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'cubit/home_page_cubit.dart';
-import 'home_page_components/current_shipments/current_shipments.dart';
+import 'home_page_components/current_shipments/current_shipment_widget.dart';
 import 'home_page_components/image_components/list_images.dart';
 
 class HomePage extends StatelessWidget {
@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
                     ListImages(
                       images: homepageCubitObject.announcementImages,
                     ),*/
-                  CurrentShipments(),
+                  CurrentShipmentWidget(),
                 ],
               ),
             ),
