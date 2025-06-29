@@ -2,13 +2,13 @@
 import 'package:bloceproject/Pages/Login_screen/login.dart';
 import 'package:bloceproject/Pages/app_router.dart';
 import 'package:bloceproject/pages/home_page_screen/home_page.dart';
+import 'package:bloceproject/pages/notifications_screen/notifications_screen.dart';
+import 'package:bloceproject/shared/constants/constants.dart';
 import 'package:bloceproject/shared/dio_helper/dio_helper.dart';
 import 'package:bloceproject/t1/all_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloceproject/Pages/sign_up_screen/sign_up.dart';
-
-
 
 void main() {
   DioHelper.init();
@@ -16,12 +16,27 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
-      );
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          foregroundColor: Colors.white,
+        ),
+        fontFamily: 'rubik',
+        primaryColor: Constants.primaryColor,
+        // scaffoldBackgroundColor: Colors.white70,
+        textTheme: const TextTheme(
+            titleLarge: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            bodyMedium: TextStyle(
+              fontSize: 14,
+            ),
+            bodySmall: TextStyle(
+              fontSize: 12,
+            )),
+      ),
+      home: NotificationsScreen(),
+    );
   }
 }

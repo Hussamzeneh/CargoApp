@@ -18,21 +18,32 @@ class HomePageButton extends StatelessWidget {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
     return InkWell(
-      onTap: (){},
+      onTap: () {},
       child: Container(
         width: screenWidth * 0.40,
         height: screenHeight * 0.14,
-        padding:EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20.0),
         decoration: BoxDecoration(
           color: materialColor[50],
           border: Border.all(color: materialColor[200]!),
-            borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(15),
         ),
         child: Column(
           children: [
-            Icon(icon, size: 40, color: materialColor[400],),
-            Text(title,style: TextStyle(fontSize: 16,color: materialColor[400]),),
-
+            Icon(
+              icon,
+              size: 40,
+              color: materialColor[400],
+            ),
+            const SizedBox(height: 5,),
+            Text(
+              title,
+              // style: TextStyle(fontSize: 16, color: materialColor[400]),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .apply(color: materialColor[400]),
+            ),
           ],
         ),
       ),

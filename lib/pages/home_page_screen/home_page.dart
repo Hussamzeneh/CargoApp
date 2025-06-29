@@ -2,7 +2,7 @@ import 'package:bloceproject/Pages/home_page_screen/home_page_components/home_pa
 import 'package:bloceproject/pages/home_page_screen/cubit/sates.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'cubit/home_page_cubit.dart';
 import 'home_page_components/current_shipments/current_shipment_widget.dart';
 import 'home_page_components/image_components/list_images.dart';
@@ -26,9 +26,9 @@ class HomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Text(
+                  Text(
                     "خدماتنا",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(
                     height: 10,
@@ -38,11 +38,11 @@ class HomePage extends StatelessWidget {
                     children: [
                       HomePageButton(
                           color: Colors.green,
-                          icon: Icons.fire_truck,
+                          icon: FontAwesomeIcons.truck,
                           title: 'اضافة شحنة'),
                       HomePageButton(
                           color: Colors.blue,
-                          icon: Icons.qr_code_2,
+                          icon: FontAwesomeIcons.qrcode,
                           title: 'استلام شحنة'),
                     ],
                   ),
