@@ -7,7 +7,7 @@ class DioHelper {
   static init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'http://192.168.177.17:8000/api',
+        baseUrl: 'https://bd0d-138-199-21-200.ngrok-free.app/api',
         receiveDataWhenStatusError: true,
       ),
     );
@@ -70,9 +70,21 @@ class DioHelper {
     );
   }
 
-  static Future<Response> getProduct() async {
+  static Future<Response> getProducts() async {
+    return await dio.get(Endpoints.getProducts,
+        options: Options(
+            headers: {'Accept': 'application/json'},
+            followRedirects: false,
+            validateStatus: (status) {
+              return true;
+            }));
+  }
+
+
+
+  static Future<Response> getshipmint() async {
     return await dio.get(
-      Endpoints.getProducts,
+      Endpoints.shipmint,
       options: Options(
         followRedirects: false,
         validateStatus: (status) {
@@ -81,4 +93,10 @@ class DioHelper {
       ),
     );
   }
+
+
+
+
+
+
 }
