@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 
+import '../constants/constants.dart';
+
 class CustomizedButton extends StatelessWidget {
   final String title;
   final bool condition;
   final Function() onPressed;
-  final Color color;
+  final Color _color;
 
-  const CustomizedButton({
-    Key? key,
+  CustomizedButton({
+    super.key,
     required this.title,
     required this.condition,
     required this.onPressed,
-    this.color = Colors.blue,
-  }) : super(key: key);
+    Color? color,
+  }) : _color = color ?? Constants.primaryColor;
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +23,20 @@ class CustomizedButton extends StatelessWidget {
       condition: condition,
       builder: (context) => ElevatedButton(
         style: ElevatedButton.styleFrom(
-          minimumSize: Size(410,55),
+          minimumSize: Size(410, 55),
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          backgroundColor: color,
+          backgroundColor: _color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
         ),
         onPressed: onPressed,
-          child: Center(child: Text(title)),
+        child: Center(
+          child: Text(
+            title,
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
       ),
       fallback: (context) => const Center(
         child: CircularProgressIndicator(),

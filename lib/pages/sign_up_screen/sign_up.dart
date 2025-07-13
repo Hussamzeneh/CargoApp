@@ -129,7 +129,7 @@ class SignUp extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        Login()), // استبدل SecondPage بالصفحة التي ترغب في الانتقال إليها
+                                        LoginScreen()), // استبدل SecondPage بالصفحة التي ترغب في الانتقال إليها
                               );
                             },
                             child: Text(
