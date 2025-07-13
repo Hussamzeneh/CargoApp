@@ -17,7 +17,7 @@ class _CurrentShipmentPipelineState extends State<CurrentShipmentPipeline> {
   final controller =
       PageController(viewportFraction: 0.8, keepPage: true, initialPage: 0);
 
-  final double stepRadius = 15.0;
+  final double stepRadius = 18.0;
 
   // final steps = List.generate(
   //   5,

@@ -10,14 +10,10 @@ class NotificationsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        elevation: 1.2,
+        elevation: Theme.of(context).appBarTheme.elevation,
         centerTitle: true,
         title: const Text('Notification'),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(20), // Apply 30px radius to bottom corners
-          ),
-        ),
+        shape: Theme.of(context).appBarTheme.shape,
         leading: IconButton(onPressed: (){}, icon: const Icon(FontAwesomeIcons.arrowLeft)),
       ),
       body: Padding(

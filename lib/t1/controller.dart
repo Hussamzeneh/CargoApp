@@ -19,7 +19,7 @@ class ProductsController extends GetxController {
 
     try {
       var response = await DioHelper.getProduct();
-      //print(response.data);
+      print(response.data);
       for (var p in response.data['data']) {
         products.add(ProductModel.fromJson(p));
       }

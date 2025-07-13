@@ -21,8 +21,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           foregroundColor: Colors.white,
+          elevation: 1.5,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom:
+                  Radius.circular(20.0), // Apply 30px radius to bottom corners
+            ),
+          ),
         ),
         fontFamily: 'rubik',
         primaryColor: Constants.primaryColor,
@@ -36,7 +43,7 @@ class MyApp extends StatelessWidget {
               fontSize: 12,
             )),
       ),
-      home: NotificationsScreen(),
+      home: HomePage(),
     );
   }
 }
