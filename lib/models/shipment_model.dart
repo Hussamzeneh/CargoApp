@@ -1,45 +1,73 @@
+import 'package:bloceproject/shared/constants/shipment_status.dart';
+
 class ShipmentModel {
-  final String id;
-  final String trackingNumber;
-  final String status;
-  final String origin;
-  final String destination;
-  final DateTime shipmentDate;
-  final String? currentLocation;
-  final double? progress;
+  late final int id;
+  late final int clientId;
+  late final int centerFromId;
+  late final int centerToId;
+  late final int pickupDriverId;
+  late final int deliveryDriverId;
+  late final double senderLat;
+  late final double senderLng;
+  late final int recipientId;
+  late final ShipmentStatus status;
+  late final double recipientLat;
+  late final double recipientLng;
+  late final String shipmentType;
+  late final int numberOfPieces;
+  late final double weight;
+  late final double deliveryPrice;
+  late final double productValue;
+  late final double totalAmount;
+  late final String invoiceNumber;
+  late final String barcode;
+  late final String qrCodeUrl;
 
-  ShipmentModel({
-    required this.id,
-    required this.trackingNumber,
-    required this.status,
-    required this.origin,
-    required this.destination,
-    required this.shipmentDate,
-    this.currentLocation,
-    this.progress,
-  });
-
-  factory ShipmentModel.fromJson(Map<String, dynamic> json) {
-    return ShipmentModel(
-      id: json['id'],
-      trackingNumber: json['trackingNumber'],
-      status: json['status'],
-      origin: json['origin'],
-      destination: json['destination'],
-      shipmentDate: DateTime.parse(json['shipmentDate']),
-      currentLocation: json['currentLocation'],
-      progress: json['progress']?.toDouble(),
-    );
+  ShipmentModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    clientId = json['clientId'];
+    centerFromId = json['centerFromId'];
+    centerToId = json['centerToId'];
+    pickupDriverId = json['pickupDriverId'];
+    deliveryDriverId = json['deliveryDriverId'];
+    senderLat = json['senderLat'];
+    senderLng = json['senderLng'];
+    recipientId = json['recipientId'];
+    recipientLat = json['recipientLat'];
+    recipientLng = json['recipientLng'];
+    shipmentType = json['shipmentType'];
+    numberOfPieces = json['numberOfPieces'];
+    weight = json['weight'];
+    deliveryPrice = json['deliveryPrice'];
+    productValue = json['productValue'];
+    totalAmount = json['totalAmount'];
+    invoiceNumber = json['invoiceNumber'];
+    barcode = json['barcode'];
+    qrCodeUrl = json['qrCodeUrl'];
+    status = ShipmentStatus.fromBackendStatus(json['status']);
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'trackingNumber': trackingNumber,
-    'status': status,
-    'origin': origin,
-    'destination': destination,
-    'shipmentDate': shipmentDate.toIso8601String(),
-    'currentLocation': currentLocation,
-    'progress': progress,
-  };
+        'id': id,
+        'clientId': clientId,
+        'centerFromId': centerFromId,
+        'centerToId': centerToId,
+        'pickupDriverId': pickupDriverId,
+        'deliveryDriverId': deliveryDriverId,
+        'senderLat': senderLat,
+        'senderLng': senderLng,
+        'recipientId': recipientId,
+        'recipientLat': recipientLat,
+        'recipientLng': recipientLng,
+        'shipmentType': shipmentType,
+        'numberOfPieces': numberOfPieces,
+        'weight': weight,
+        'deliveryPrice': deliveryPrice,
+        'productValue': productValue,
+        'totalAmount': totalAmount,
+        'invoiceNumber': invoiceNumber,
+        'barcode': barcode,
+        'qrCodeUrl': qrCodeUrl,
+        'status': status.toJson(),
+      };
 }
