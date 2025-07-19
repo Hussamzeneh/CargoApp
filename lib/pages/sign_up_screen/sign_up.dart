@@ -76,7 +76,7 @@ class SignUp extends StatelessWidget {
                       title: 'SignUp',
                         condition: state is! SignUpScreenLoadingState,
                         onPressed: () {
-                          signUpCubitObject.SignUp(context: context);
+                          signUpCubitObject.signUp(context: context);
                         }
                     ),
                     SizedBox(

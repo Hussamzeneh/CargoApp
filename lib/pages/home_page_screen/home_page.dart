@@ -103,7 +103,7 @@ class HomePage extends StatelessWidget {
                     ListImages(
                       images: homepageCubitObject.announcementImages,
                     ),*/
-                  CurrentShipmentWidget(),
+                  // CurrentShipmentWidget(),
                 ],
               ),
             ),

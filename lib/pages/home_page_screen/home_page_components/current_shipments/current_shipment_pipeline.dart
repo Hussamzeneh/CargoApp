@@ -1,10 +1,16 @@
 import 'dart:async';
+import 'package:bloceproject/models/shipment_model.dart';
 import 'package:bloceproject/pages/home_page_screen/home_page_components/current_shipments/current_shipment_steps.dart';
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/material.dart';
 
 class CurrentShipmentPipeline extends StatefulWidget {
-  const CurrentShipmentPipeline({super.key});
+  const CurrentShipmentPipeline({
+    super.key,
+    required this.shipmentModel,
+  });
+
+  final ShipmentModel shipmentModel;
 
   @override
   State<CurrentShipmentPipeline> createState() =>
@@ -18,24 +24,6 @@ class _CurrentShipmentPipelineState extends State<CurrentShipmentPipeline> {
       PageController(viewportFraction: 0.8, keepPage: true, initialPage: 0);
 
   final double stepRadius = 18.0;
-
-  // final steps = List.generate(
-  //   5,
-  //   (index) => EasyStep(
-  //     customStep: Container(
-  //       // decoration: const BoxDecoration(
-  //       //   color: Colors.red,
-  //       //   shape: BoxShape.circle,
-  //       // ),
-  //       // // color: Colors.red,
-  //       // child: Icon(
-  //       //   Icons.add,
-  //       //   color: Colors.white,
-  //       //   size: 20.0,
-  //       // ),
-  //     ),
-  //   ),
-  // );
 
   @override
   void initState() {

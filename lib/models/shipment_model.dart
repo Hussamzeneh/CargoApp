@@ -13,7 +13,7 @@ class ShipmentModel {
   late final ShipmentStatus status;
   late final double recipientLat;
   late final double recipientLng;
-  late final String shipmentType;
+  late final String type;
   late final int numberOfPieces;
   late final double weight;
   late final double deliveryPrice;
@@ -35,7 +35,7 @@ class ShipmentModel {
     recipientId = json['recipientId'];
     recipientLat = json['recipientLat'];
     recipientLng = json['recipientLng'];
-    shipmentType = json['shipmentType'];
+    type = json['shipmentType'];
     numberOfPieces = json['numberOfPieces'];
     weight = json['weight'];
     deliveryPrice = json['deliveryPrice'];
@@ -59,7 +59,7 @@ class ShipmentModel {
         'recipientId': recipientId,
         'recipientLat': recipientLat,
         'recipientLng': recipientLng,
-        'shipmentType': shipmentType,
+        'shipmentType': type,
         'numberOfPieces': numberOfPieces,
         'weight': weight,
         'deliveryPrice': deliveryPrice,
