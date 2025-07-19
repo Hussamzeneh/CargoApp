@@ -1,23 +1,26 @@
 import 'package:flutter/cupertino.dart';
 
 class UserTextController {
+  late TextEditingController nameController;
   late TextEditingController emailController;
   late TextEditingController passwordController;
-  late TextEditingController phonController;
+  late TextEditingController phoneController;
 
 
 
   UserTextController(){
+    nameController = TextEditingController();
     emailController = TextEditingController();
     passwordController = TextEditingController();
-    phonController = TextEditingController();
+    phoneController = TextEditingController();
   }
 
 
   dispose(){
     emailController.dispose();
-    phonController.dispose();
+    phoneController.dispose();
     passwordController.dispose();
+    nameController.dispose();
   }
 
 }

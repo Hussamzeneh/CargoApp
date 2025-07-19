@@ -34,6 +34,15 @@ class SignUp extends StatelessWidget {
                     SizedBox(height: 30,),
                     ValidatedTextField(
                       controller:
+                      signUpCubitObject.userTextController.nameController,
+                      validator:
+                      signUpCubitObject.userTextValidators.nameValidator,
+                      errorText: 'name field cannot be empty',
+                      hintText: 'name',
+                      icon: Icons.person,
+                    ),
+                    ValidatedTextField(
+                      controller:
                       signUpCubitObject.userTextController.emailController,
                       validator:
                       signUpCubitObject.userTextValidators.emailValidator,
@@ -45,7 +54,7 @@ class SignUp extends StatelessWidget {
                     ValidatedTextField(
                      icon: Icons.phone,
                       controller:
-                      signUpCubitObject.userTextController.phonController,
+                      signUpCubitObject.userTextController.phoneController,
                       validator:
                       signUpCubitObject.userTextValidators.phoneValidator,
                       errorText: 'phone field cannot be empty',
@@ -67,7 +76,7 @@ class SignUp extends StatelessWidget {
                       title: 'SignUp',
                         condition: state is! SignUpScreenLoadingState,
                         onPressed: () {
-                          signUpCubitObject.SignUp();
+                          signUpCubitObject.SignUp(context: context);
                         }
                     ),
                     SizedBox(
@@ -82,62 +91,62 @@ class SignUp extends StatelessWidget {
                               color: Color(0xff575757)),
                         )),
                     SizedBox(height: 20,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        CircleImageWithBorder(
-                          borderColor: AppColors.primary,
-                          borderWidth: 1,
-                          imagePath: NetworkImage('lib/assets/images/apple 1.png'),
-                          size: 56,
-                        ),
-                        SizedBox(width: 20,),
-                        CircleImageWithBorder(
-                          borderColor: AppColors.primary,
-                          borderWidth: 1,
-                          imagePath: NetworkImage('lib/assets/images/facebook-app-symbol 1.png'),
-                          size: 56,
-                        ),
-                        SizedBox(width: 20,),
-                        CircleImageWithBorder(
-                          borderColor: AppColors.primary,
-                          borderWidth: 1,
-                          imagePath: NetworkImage('lib/assets/images/Frame 4.png') ,
-                          size: 56,
-                        ),
-                        SizedBox(height: 30,),
-
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   crossAxisAlignment: CrossAxisAlignment.center,
+                    //   children: [
+                    //     CircleImageWithBorder(
+                    //       borderColor: AppColors.primary,
+                    //       borderWidth: 1,
+                    //       imagePath: NetworkImage('assets/images/apple 1.png'),
+                    //       size: 56,
+                    //     ),
+                    //     SizedBox(width: 20,),
+                    //     CircleImageWithBorder(
+                    //       borderColor: AppColors.primary,
+                    //       borderWidth: 1,
+                    //       imagePath: NetworkImage('assets/images/facebook-app-symbol 1.png'),
+                    //       size: 56,
+                    //     ),
+                    //     SizedBox(width: 20,),
+                    //     CircleImageWithBorder(
+                    //       borderColor: AppColors.primary,
+                    //       borderWidth: 1,
+                    //       imagePath: NetworkImage('assets/images/Frame 4.png') ,
+                    //       size: 56,
+                    //     ),
+                    //     SizedBox(height: 30,),
+                    //
+                    //   ],
+                    // ),
                     SizedBox(height: 30,),
                     Row(
                       children: [
                         SizedBox(
                           width: 115,
                         ),
-                        Text(
-                          "I Already Have an Account ?",
-                          style: TextStyle(color: Color(0xff575757)),
-                        ),
-                        SizedBox(
-                          width: 4,
-                        ),
-                        TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        LoginScreen()), // استبدل SecondPage بالصفحة التي ترغب في الانتقال إليها
-                              );
-                            },
-                            child: Text(
-                              "Login",
-                              style: TextStyle(
-                                  color: Color(0xffF83758),
-                                  fontWeight: FontWeight.bold),
-                            )),
+                        // Text(
+                        //   "I Already Have an Account ?",
+                        //   style: TextStyle(color: Color(0xff575757)),
+                        // ),
+                        // SizedBox(
+                        //   width: 4,
+                        // ),
+                        // TextButton(
+                        //     onPressed: () {
+                        //       Navigator.push(
+                        //         context,
+                        //         MaterialPageRoute(
+                        //             builder: (context) =>
+                        //                 LoginScreen()), // استبدل SecondPage بالصفحة التي ترغب في الانتقال إليها
+                        //       );
+                        //     },
+                        //     child: Text(
+                        //       "Login",
+                        //       style: TextStyle(
+                        //           color: Color(0xffF83758),
+                        //           fontWeight: FontWeight.bold),
+                        //     )),
                       ],
                     )
 

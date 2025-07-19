@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
               fontSize: 12,
             )),
       ),
-      home: HomePage(),
+      home: SignUp(),
     );
   }
 }

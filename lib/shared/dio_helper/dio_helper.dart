@@ -31,15 +31,19 @@ class DioHelper {
   }
 
   static Future<Response> signUp({
+    required String name,
     required String email,
     required String password,
     required String phone,
   }) async {
     return await dio.post(Endpoints.signUpEndpoints,
         data: {
+          'name': name,
           'email': email,
-          'mobile': phone,
+          'phone': phone,
           'password': password,
+          'password_confirmation': password,
+          'role': 'client',
         },
         options: Options(
             headers: {'Accept': 'application/json'},

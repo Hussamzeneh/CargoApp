@@ -1,15 +1,10 @@
-import 'package:bloceproject/Pages/Login_screen/cubit/cubit.dart';
 import 'package:bloceproject/Pages/Login_screen/cubit/states.dart';
-import 'package:bloceproject/Pages/sign_up_screen/sign_up.dart';
-import 'package:bloceproject/shared/component/circle_images.dart';
 import 'package:bloceproject/shared/component/customized_botton.dart';
 import 'package:bloceproject/shared/component/validated_text_field.dart';
-import 'package:bloceproject/shared/const/color.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../shared/constants/constants.dart';
+import 'cubit/cubit.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -17,11 +12,11 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginScreenCubite(),
-      child: BlocConsumer<LoginScreenCubite, LoginScreenStates>(
+      create: (context) => LoginScreenCubit(),
+      child: BlocConsumer<LoginScreenCubit, LoginScreenStates>(
         listener: (context, state) {},
         builder: (context, state) {
-          var loginCubitObject = LoginScreenCubite.get(context);
+          var loginCubitObject = LoginScreenCubit.get(context);
           var screenHeight = MediaQuery.of(context).size.height;
           return Scaffold(
             body: Column(
@@ -72,7 +67,7 @@ class LoginScreen extends StatelessWidget {
                         ValidatedTextField(
                           icon: Icons.phone,
                           controller: loginCubitObject
-                              .userTextController.phonController,
+                              .userTextController.phoneController,
                           validator: loginCubitObject
                               .userTextValidators.phoneValidator,
                           errorText: 'phone field cannot be empty',
@@ -97,15 +92,19 @@ class LoginScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Checkbox(value: false, onChanged: (d){}),
-                            TextButton(onPressed: (){}, child: Text('Forget Password?'))
+                            Checkbox(value: false, onChanged: (d) {}),
+                            TextButton(
+                                onPressed: () {},
+                                child: Text('Forget Password?'))
                           ],
                         ),
                         CustomizedButton(
                             title: 'Login',
                             condition: state is! LoginScreenLoadingState,
                             onPressed: () {
-                              loginCubitObject.Login();
+                              loginCubitObject.login(
+                                context: context,
+                              );
                             }),
                         SizedBox(
                           height: 30,
