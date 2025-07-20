@@ -1,3 +1,4 @@
+import 'package:bloceproject/shared/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class ValidatedTextField extends StatelessWidget {
@@ -64,7 +65,7 @@ class ValidatedTextField extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(radius),
           ),
-          prefixIcon: Icon(icon),
+          prefixIcon: Icon(icon, color: Constants.primaryColor,),
         ),
       ),
     );

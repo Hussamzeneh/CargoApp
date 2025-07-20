@@ -5,11 +5,16 @@ import 'package:bloceproject/shared/component/circle_images.dart';
 import 'package:bloceproject/shared/component/customized_botton.dart';
 import 'package:bloceproject/shared/component/validated_text_field.dart';
 import 'package:bloceproject/shared/const/color.dart';
+import 'package:bloceproject/shared/constants/app_routes/app_router.dart';
+import 'package:bloceproject/shared/constants/app_routes/app_routes.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hugeicons/hugeicons.dart';
 
+import '../../shared/component/show_toast.dart';
 import '../../shared/constants/constants.dart';
 
 class SignUp extends StatelessWidget {
@@ -20,7 +25,23 @@ class SignUp extends StatelessWidget {
     return BlocProvider(
       create: (context) => SignUpScreenCubit(),
       child: BlocConsumer<SignUpScreenCubit, SignUpScreenStates>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is SignUpScreenErrorState) {
+            showToast(
+              context: context,
+              text: state.error,
+              color: Constants.errorColor,
+            );
+          } else if (state is SignUpScreenSuccessState) {
+            context.go(
+                '${AppRoutes.otpScreen}/${SignUpScreenCubit.get(context).userTextController.emailController.text}');
+            showToast(
+              context: context,
+              text: state.message,
+              color: Constants.successColor,
+            );
+          }
+        },
         builder: (context, state) {
           var signUpCubitObject = SignUpScreenCubit.get(context);
           var screenHeight = MediaQuery.of(context).size.height;
@@ -73,10 +94,9 @@ class SignUp extends StatelessWidget {
                       child: SingleChildScrollView(
                         child: ConstrainedBox(
                           constraints: BoxConstraints(
-                              maxHeight: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .height * 0.45,),
+                            maxHeight:
+                                MediaQuery.of(context).size.height * 0.45,
+                          ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -87,7 +107,7 @@ class SignUp extends StatelessWidget {
                                     .userTextValidators.nameValidator,
                                 errorText: 'name field cannot be empty',
                                 hintText: 'name',
-                                icon: Icons.person,
+                                icon: HugeIcons.strokeRoundedUserAccount,
                               ),
                               ValidatedTextField(
                                 controller: signUpCubitObject
@@ -96,10 +116,10 @@ class SignUp extends StatelessWidget {
                                     .userTextValidators.emailValidator,
                                 errorText: 'email field cannot be empty',
                                 hintText: 'email',
-                                icon: Icons.email,
+                                icon: HugeIcons.strokeRoundedMailAccount01,
                               ),
                               ValidatedTextField(
-                                icon: Icons.phone,
+                                icon: HugeIcons.strokeRoundedCall02,
                                 controller: signUpCubitObject
                                     .userTextController.phoneController,
                                 validator: signUpCubitObject
@@ -108,7 +128,7 @@ class SignUp extends StatelessWidget {
                                 hintText: 'phone',
                               ),
                               ValidatedTextField(
-                                icon: Icons.lock,
+                                icon: HugeIcons.strokeRoundedLockKey,
                                 obscureText: true,
                                 controller: signUpCubitObject
                                     .userTextController.passwordController,
@@ -116,6 +136,7 @@ class SignUp extends StatelessWidget {
                                     .userTextValidators.passwordValidator,
                                 errorText: 'password field cannot be empty',
                                 hintText: 'password',
+                                hasNextText: false,
                               ),
                               CustomizedButton(
                                   title: 'SignUp',

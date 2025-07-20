@@ -1,21 +1,42 @@
 import 'package:bloceproject/pages/otp_screen/cubit/cubit.dart';
 import 'package:bloceproject/pages/otp_screen/cubit/states.dart';
-import 'package:bloceproject/shared/constants/app_routes/app_router.dart';
 import 'package:bloceproject/shared/constants/app_routes/app_routes.dart';
+import 'package:bloceproject/shared/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import '../../shared/component/show_toast.dart';
 
 class OtpScreen extends StatelessWidget {
-  const OtpScreen({super.key});
+  const OtpScreen({
+    super.key,
+    required this.email,
+  });
+
+  final String email;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => OtpScreenCubit(),
       child: BlocConsumer<OtpScreenCubit, OtpScreenStates>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is OtpScreenErrorState) {
+            showToast(
+              context: context,
+              text: state.error,
+              color: Constants.errorColor,
+            );
+          } else if (state is OtpScreenSuccessState) {
+            context.go(AppRoutes.loginScreen);
+            showToast(
+              context: context,
+              text: state.message,
+              color: Constants.successColor,
+            );
+          }
+        },
         builder: (context, state) {
           var otpCubit = OtpScreenCubit.get(context);
           return Scaffold(
@@ -24,7 +45,7 @@ class OtpScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 child: PinCodeTextField(
                   appContext: context,
-                  length: 4,
+                  length: 6,
                   obscureText: false,
                   animationType: AnimationType.fade,
                   pinTheme: PinTheme(
@@ -34,17 +55,14 @@ class OtpScreen extends StatelessWidget {
                     fieldWidth: 40,
                     activeFillColor: Colors.white,
                   ),
-                  animationDuration: Duration(milliseconds: 300),
+                  animationDuration: const Duration(milliseconds: 300),
                   //backgroundColor: Colors.blue.shade50,
                   enableActiveFill: true,
                   //errorAnimationController: errorController,
                   controller: otpCubit.otpController,
                   onCompleted: (v) async {
                     print("Completed");
-                    bool success = await otpCubit.verifyEmail();
-                    if(success) {
-                      context.go(AppRoutes.loginScreen);
-                    }
+                    otpCubit.verifyEmail(email: email);
                   },
                   onChanged: (value) {
                     print(value);

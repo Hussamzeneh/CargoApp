@@ -11,17 +11,19 @@ class OtpScreenCubit extends Cubit<OtpScreenStates> {
 
   TextEditingController otpController = TextEditingController();
 
-  Future<bool> verifyEmail() async {
+  verifyEmail({required String email}) async {
     emit(OtpScreenLoadingState());
     try {
-      var response = await DioHelper.verifyEmail(otp: otpController.text);
-
-      emit(OtpScreenSuccessState());
-      return true;
+      var response = await DioHelper.verifyEmail(otp: otpController.text, email: email);
+      print(response.data);
+      if (response.statusCode == 200) {
+        emit(OtpScreenSuccessState(response.data['message']));
+      } else {
+        emit(OtpScreenErrorState(response.data['message']));
+      }
     } catch (e) {
       print(e.toString());
       emit(OtpScreenErrorState(e.toString()));
-      return false;
     }
   }
 }

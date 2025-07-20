@@ -21,7 +21,7 @@ class LoginScreenCubit extends Cubit<LoginScreenStates> {
     required BuildContext context,
   }) async {
     var validated =
-        userTextValidators.phoneValidator.currentState!.validate() &&
+        userTextValidators.emailValidator.currentState!.validate() &&
             userTextValidators.passwordValidator.currentState!.validate();
 
     if (!validated) return;
@@ -31,28 +31,16 @@ class LoginScreenCubit extends Cubit<LoginScreenStates> {
     try {
       var loginResponse = await DioHelper.login(
         password: userTextController.passwordController.text,
-        phone: userTextController.phoneController.text,
+        email: userTextController.emailController.text,
       );
       if (loginResponse.statusCode == 200) {
-        userModel = UserModel.fromJson(loginResponse.data);
-
-        //SHOULD NAVIGATE TO HOME SCREEN
-
-        showToast(
-          context: context,
-          text: loginResponse.data['message'],
-          color: Colors.green,
-        );
+        //userModel = UserModel.fromJson(loginResponse.data);
+        emit(LoginScreenSuccessState(loginResponse.data['message']));
       } else {
-        showToast(
-          context: context,
-          text: loginResponse.data['message'],
-          color: Colors.red,
-        );
+        emit(LoginScreenErrorState(loginResponse.data['message']));
       }
-      emit(LoginScreenSuccessState());
     } catch (e) {
-      emit(LoginScreenErrorState("the error message that comes form backend"));
+      emit(LoginScreenErrorState(e.toString()));
     }
   }
 }

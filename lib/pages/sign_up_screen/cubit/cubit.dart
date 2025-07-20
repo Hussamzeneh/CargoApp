@@ -35,17 +35,10 @@ class SignUpScreenCubit extends Cubit<SignUpScreenStates> {
           phone: userTextController.phoneController.text);
       print(signUpResponse.data);
       if (signUpResponse.statusCode == 200) {
-        showToast(
-            context: context,
-            text: signUpResponse.data['message'],
-            color: Colors.green);
+        emit(SignUpScreenSuccessState(signUpResponse.data['message']));
       } else {
-        showToast(
-            context: context,
-            text: signUpResponse.data['message'],
-            color: Colors.red);
+        emit(SignUpScreenErrorState(signUpResponse.data['message']));
       }
-      emit(SignUpScreenSuccessState());
     } catch (e) {
       print(e.toString());
       emit(SignUpScreenErrorState("the error message comes form backend"));

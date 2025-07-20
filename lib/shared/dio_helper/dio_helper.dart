@@ -14,12 +14,12 @@ class DioHelper {
   }
 
   static Future<Response> login({
-    required String phone,
+    required String email,
     required String password,
   }) async {
     return await dio.post(Endpoints.loginEndpoints,
         data: {
-          'mobile': phone,
+          'email': email,
           'password': password,
         },
         options: Options(
@@ -87,12 +87,14 @@ class DioHelper {
   }
 
   static Future<Response> verifyEmail({
+    required String email,
     required String otp,
   }) async {
     return await dio.post(
-      Endpoints.loginEndpoints,
+      Endpoints.verifyEmail,
       data: {
-        'code': otp,
+        'email': email,
+        'verification_code': otp,
       },
       options: Options(
         headers: {'Accept': 'application/json'},
