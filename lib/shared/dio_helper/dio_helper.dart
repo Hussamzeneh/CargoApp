@@ -85,4 +85,22 @@ class DioHelper {
       ),
     );
   }
+
+  static Future<Response> verifyEmail({
+    required String otp,
+  }) async {
+    return await dio.post(
+      Endpoints.loginEndpoints,
+      data: {
+        'code': otp,
+      },
+      options: Options(
+        headers: {'Accept': 'application/json'},
+        followRedirects: false,
+        validateStatus: (status) {
+          return status! < 500;
+        },
+      ),
+    );
+  }
 }

@@ -3,6 +3,8 @@ import 'package:bloceproject/Pages/Login_screen/login.dart';
 import 'package:bloceproject/Pages/app_router.dart';
 import 'package:bloceproject/pages/home_page_screen/home_page.dart';
 import 'package:bloceproject/pages/notifications_screen/notifications_screen.dart';
+import 'package:bloceproject/pages/otp_screen/otp_screen.dart';
+import 'package:bloceproject/shared/constants/app_routes/app_router.dart';
 import 'package:bloceproject/shared/constants/constants.dart';
 import 'package:bloceproject/shared/dio_helper/dio_helper.dart';
 import 'package:bloceproject/t1/all_products.dart';
@@ -18,7 +20,8 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: appRoutes,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
@@ -31,7 +34,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        fontFamily: 'rubik',
+        fontFamily: 'tajawal',
         primaryColor: Constants.primaryColor,
         // scaffoldBackgroundColor: Colors.white70,
         textTheme: const TextTheme(
@@ -43,7 +46,8 @@ class MyApp extends StatelessWidget {
               fontSize: 12,
             )),
       ),
-      home: HomePage(),
+
+      // home: OtpScreen(),
     );
   }
 }

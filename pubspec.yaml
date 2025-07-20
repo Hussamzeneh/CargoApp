@@ -43,6 +43,8 @@ dependencies:
   easy_stepper: ^0.8.5+1
   font_awesome_flutter: ^10.8.0
   fluttertoast: ^8.2.12
+  pin_code_fields: ^8.0.1
+  go_router: ^15.1.2
 
 
 dev_dependencies:
@@ -94,6 +96,16 @@ flutter:
         - asset: assets/fonts/rubik/Rubik-Medium.ttf
         - asset: assets/fonts/rubik/Rubik-SemiBold.ttf
         - asset: assets/fonts/rubik/Rubik-VariableFont_wght.ttf
+          style: normal
+    - family: tajawal
+      fonts:
+        - asset: assets/fonts/tajawal/Tajawal-Black.ttf
+        - asset: assets/fonts/tajawal/Tajawal-Bold.ttf
+        - asset: assets/fonts/tajawal/Tajawal-ExtraBold.ttf
+        - asset: assets/fonts/tajawal/Tajawal-ExtraLight.ttf
+        - asset: assets/fonts/tajawal/Tajawal-Light.ttf
+        - asset: assets/fonts/tajawal/Tajawal-Medium.ttf
+        - asset: assets/fonts/tajawal/Tajawal-Regular.ttf
           style: normal
 #        - asset: assets/fonts/ltazer/Schyler-Italic.ttf
 #          style: italic
