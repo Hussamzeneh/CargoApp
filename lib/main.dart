@@ -7,13 +7,15 @@ import 'package:bloceproject/pages/otp_screen/otp_screen.dart';
 import 'package:bloceproject/shared/constants/app_routes/app_router.dart';
 import 'package:bloceproject/shared/constants/constants.dart';
 import 'package:bloceproject/shared/dio_helper/dio_helper.dart';
+import 'package:bloceproject/shared/storage/storage_helper.dart';
 import 'package:bloceproject/t1/all_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloceproject/Pages/sign_up_screen/sign_up.dart';
 
-void main() {
+void main() async {
   DioHelper.init();
+  await StorageHelper.init();
   runApp(MyApp());
 }
 

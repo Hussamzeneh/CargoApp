@@ -188,35 +188,25 @@ class SignUp extends StatelessWidget {
                 //
                 //   ],
                 // ),
-                // Row(
-                //   children: [
-                //     SizedBox(
-                //       width: 115,
-                //     ),
-                //     // Text(
-                //     //   "I Already Have an Account ?",
-                //     //   style: TextStyle(color: Color(0xff575757)),
-                //     // ),
-                //     // SizedBox(
-                //     //   width: 4,
-                //     // ),
-                //     // TextButton(
-                //     //     onPressed: () {
-                //     //       Navigator.push(
-                //     //         context,
-                //     //         MaterialPageRoute(
-                //     //             builder: (context) =>
-                //     //                 LoginScreen()), // استبدل SecondPage بالصفحة التي ترغب في الانتقال إليها
-                //     //       );
-                //     //     },
-                //     //     child: Text(
-                //     //       "Login",
-                //     //       style: TextStyle(
-                //     //           color: Color(0xffF83758),
-                //     //           fontWeight: FontWeight.bold),
-                //     //     )),
-                //   ],
-                // )
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "I Already Have an Account ?",
+                      style: TextStyle(color: Color(0xff575757)),
+                    ),
+                    TextButton(
+                        onPressed: () {
+                          context.go(AppRoutes.loginScreen);
+                        },
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                              color: Color(0xffF83758),
+                              fontWeight: FontWeight.bold),
+                        )),
+                  ],
+                )
               ],
             ),
           );

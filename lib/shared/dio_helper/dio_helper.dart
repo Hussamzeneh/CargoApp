@@ -105,4 +105,22 @@ class DioHelper {
       ),
     );
   }
+
+  static Future<Response> getShipments({
+    required String token,
+  }) async {
+    return await dio.get(
+      Endpoints.getShipments,
+      options: Options(
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        followRedirects: false,
+        validateStatus: (status) {
+          return true;
+        },
+      ),
+    );
+  }
 }

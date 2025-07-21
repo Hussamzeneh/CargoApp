@@ -9,4 +9,5 @@ abstract class Endpoints{
   static String resetPassword = '/resetPassword';
   static String announcement = '/image' ;
   static String getProducts = '/customer/product/all/viewed';
+  static String getShipments = '/my-shipments';
 }

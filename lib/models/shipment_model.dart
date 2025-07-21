@@ -16,34 +16,34 @@ class ShipmentModel {
   late final String type;
   late final int numberOfPieces;
   late final double weight;
-  late final double deliveryPrice;
-  late final double productValue;
-  late final double totalAmount;
+  late final String deliveryPrice;
+  late final String productValue;
+  late final String totalAmount;
   late final String invoiceNumber;
   late final String barcode;
   late final String qrCodeUrl;
 
   ShipmentModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    clientId = json['clientId'];
-    centerFromId = json['centerFromId'];
-    centerToId = json['centerToId'];
-    pickupDriverId = json['pickupDriverId'];
-    deliveryDriverId = json['deliveryDriverId'];
-    senderLat = json['senderLat'];
-    senderLng = json['senderLng'];
-    recipientId = json['recipientId'];
-    recipientLat = json['recipientLat'];
-    recipientLng = json['recipientLng'];
-    type = json['shipmentType'];
-    numberOfPieces = json['numberOfPieces'];
-    weight = json['weight'];
-    deliveryPrice = json['deliveryPrice'];
-    productValue = json['productValue'];
-    totalAmount = json['totalAmount'];
-    invoiceNumber = json['invoiceNumber'];
+    // clientId = json['clientId'];
+    // centerFromId = json['centerFromId'];
+    // centerToId = json['centerToId'];
+    // pickupDriverId = json['pickupDriverId'];
+    // deliveryDriverId = json['deliveryDriverId'];
+    // senderLat = json['senderLat'];
+    // senderLng = json['senderLng'];
+    // recipientId = json['recipientId'];
+    // recipientLat = json['recipientLat'];
+    // recipientLng = json['recipientLng'];
+    type = json['shipment_type'];
+    // numberOfPieces = json['numberOfPieces'];
+    // weight = json['weight'];
+    deliveryPrice = json['delivery_price'];
+    productValue = json['product_value'];
+    totalAmount = json['total_amount'];
+    // invoiceNumber = json['invoiceNumber'];
     barcode = json['barcode'];
-    qrCodeUrl = json['qrCodeUrl'];
+    // qrCodeUrl = json['qrCodeUrl'];
     status = ShipmentStatus.fromBackendStatus(json['status']);
   }
 

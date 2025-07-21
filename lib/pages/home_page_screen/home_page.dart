@@ -1,5 +1,7 @@
 import 'package:bloceproject/Pages/home_page_screen/home_page_components/home_page_button.dart';
 import 'package:bloceproject/pages/home_page_screen/cubit/sates.dart';
+import 'package:bloceproject/pages/home_page_screen/home_page_components/current_shipments/current_shipments_list.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,11 +16,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomePageCubit(),
+      create: (context) => HomePageCubit()..getShipments(),
       child: BlocConsumer<HomePageCubit, HomePageStates>(
         listener: (context, state) {},
         builder: (context, state) {
-          var homepageCubitObject = HomePageCubit.get(context);
+          var homeCubit = HomePageCubit.get(context);
 
           return Scaffold(
             appBar: AppBar(
@@ -42,13 +44,6 @@ class HomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  // Text(
-                  //   "خدماتنا",
-                  //   style: Theme.of(context).textTheme.titleLarge,
-                  // ),
-                  // const SizedBox(
-                  //   height: 10,
-                  // ),
                   Card(
                     color: Colors.pink[100],
                     elevation: 1.5,
@@ -58,16 +53,18 @@ class HomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           HomePageButton(
-                              color: Colors.green,
-                              icon: FontAwesomeIcons.arrowRightArrowLeft,
-                              title: 'اضافة شحنة'),
+                            color: Colors.green,
+                            icon: FontAwesomeIcons.arrowRightArrowLeft,
+                            title: 'اضافة شحنة',
+                          ),
                           SizedBox(
                             width: 5,
                           ),
                           HomePageButton(
-                              color: Colors.blue,
-                              icon: FontAwesomeIcons.print,
-                              title: 'استلام شحنة'),
+                            color: Colors.blue,
+                            icon: FontAwesomeIcons.print,
+                            title: 'استلام شحنة',
+                          ),
                         ],
                       ),
                     ),
@@ -85,25 +82,23 @@ class HomePage extends StatelessWidget {
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black.withOpacity(0.2),
-                                offset: Offset(1, 3),
+                                offset: const Offset(1, 3),
                                 blurRadius: 7,
                               ),
                             ]),
-                        child: Padding(
-                          padding: const EdgeInsets.all(3.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(3.0),
                           child: Icon(Icons.qr_code_scanner),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 20,
+                  ConditionalBuilder(
+                    condition: state is HomePageLoadingState,
+                    builder: (context) => const CircularProgressIndicator(),
+                    fallback: (context) =>
+                        CurrentShipmentsList(shipments: homeCubit.shipments),
                   ),
-                  /*if (state is! HomePageLoadingState)
-                    ListImages(
-                      images: homepageCubitObject.announcementImages,
-                    ),*/
-                  // CurrentShipmentWidget(),
                 ],
               ),
             ),

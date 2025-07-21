@@ -5,6 +5,7 @@ import 'package:bloceproject/shared/component/show_toast.dart';
 import 'package:bloceproject/shared/constants/user_text_controllers.dart';
 import 'package:bloceproject/shared/constants/user_text_validators.dart';
 import 'package:bloceproject/shared/dio_helper/dio_helper.dart';
+import 'package:bloceproject/shared/storage/storage_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,12 +35,15 @@ class LoginScreenCubit extends Cubit<LoginScreenStates> {
         email: userTextController.emailController.text,
       );
       if (loginResponse.statusCode == 200) {
-        //userModel = UserModel.fromJson(loginResponse.data);
+        userModel = UserModel.fromJson(loginResponse.data['data']);
+        StorageHelper.storeUser(userModel);
         emit(LoginScreenSuccessState(loginResponse.data['message']));
       } else {
         emit(LoginScreenErrorState(loginResponse.data['message']));
       }
-    } catch (e) {
+    } catch (e, h) {
+      print(e.toString());
+      print(h.toString());
       emit(LoginScreenErrorState(e.toString()));
     }
   }

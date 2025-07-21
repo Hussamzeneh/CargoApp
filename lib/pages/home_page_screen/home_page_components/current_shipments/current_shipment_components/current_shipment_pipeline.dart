@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:bloceproject/models/shipment_model.dart';
-import 'package:bloceproject/pages/home_page_screen/home_page_components/current_shipments/current_shipment_steps.dart';
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/material.dart';
+
+import 'current_shipment_steps.dart';
 
 class CurrentShipmentPipeline extends StatefulWidget {
   const CurrentShipmentPipeline({
@@ -23,7 +24,7 @@ class _CurrentShipmentPipelineState extends State<CurrentShipmentPipeline> {
   final controller =
       PageController(viewportFraction: 0.8, keepPage: true, initialPage: 0);
 
-  final double stepRadius = 18.0;
+  final double stepRadius = 10.0;
 
   @override
   void initState() {
@@ -100,7 +101,7 @@ class _CurrentShipmentPipelineState extends State<CurrentShipmentPipeline> {
             activeStepBackgroundColor: Colors.orange[200],
             showLoadingAnimation: false,
             internalPadding: 5.0,
-            lineStyle: const LineStyle(lineLength: 20),
+            lineStyle: const LineStyle(lineLength: 10),
           ),
         ],
       )

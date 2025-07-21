@@ -1,5 +1,5 @@
 import 'package:bloceproject/models/shipment_model.dart';
-import 'package:bloceproject/pages/home_page_screen/home_page_components/current_shipments/current_shipment_pipeline.dart';
+import 'package:bloceproject/pages/home_page_screen/home_page_components/current_shipments/current_shipment_components/current_shipment_pipeline.dart';
 import 'package:bloceproject/pages/home_page_screen/home_page_components/current_shipments/current_shipment_status/current_shipment_status.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ class CurrentShipmentWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Padding(
-        padding: EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(15.0),
         child: Column(
           children: [
             CurrentShipmentPipeline(
@@ -32,15 +32,15 @@ class CurrentShipmentWidget extends StatelessWidget {
                 CurrentShipmentStatus(
                   shipmentModel: shipmentModel,
                 ),
-                Text('data'),
-                // Text(shipmentModel.type),
+                // Text('data'),
+                Text(shipmentModel.type),
               ],
             ),
             Row(
               children: [
                 const Expanded(child: SizedBox()),
-                Text('ANONM15215454646'),
-                // Text(shipmentModel.id.toString()),
+                // Text('ANONM15215454646'),
+                Text(shipmentModel.id.toString()),
               ],
             ),
           ],

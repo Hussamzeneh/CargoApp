@@ -22,7 +22,7 @@ showToast(
   );
   fToast.showToast(
     child: toast,
-    gravity: ToastGravity.CENTER,
+    gravity: ToastGravity.TOP,
     toastDuration: Duration(seconds: duration),
   );
 }
