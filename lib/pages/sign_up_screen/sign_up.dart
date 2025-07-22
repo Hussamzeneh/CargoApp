@@ -107,7 +107,7 @@ class SignUp extends StatelessWidget {
                                     .userTextValidators.nameValidator,
                                 errorText: 'name field cannot be empty',
                                 hintText: 'name',
-                                icon: HugeIcons.strokeRoundedUserAccount,
+                                icon: Constants.nameIcon,
                               ),
                               ValidatedTextField(
                                 controller: signUpCubitObject
@@ -119,7 +119,7 @@ class SignUp extends StatelessWidget {
                                 icon: HugeIcons.strokeRoundedMailAccount01,
                               ),
                               ValidatedTextField(
-                                icon: HugeIcons.strokeRoundedCall02,
+                                icon: Constants.phoneIcon,
                                 controller: signUpCubitObject
                                     .userTextController.phoneController,
                                 validator: signUpCubitObject
@@ -128,7 +128,7 @@ class SignUp extends StatelessWidget {
                                 hintText: 'phone',
                               ),
                               ValidatedTextField(
-                                icon: HugeIcons.strokeRoundedLockKey,
+                                icon: Constants.lockIcon,
                                 obscureText: true,
                                 controller: signUpCubitObject
                                     .userTextController.passwordController,

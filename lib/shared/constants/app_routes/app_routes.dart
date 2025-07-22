@@ -5,4 +5,6 @@ abstract class AppRoutes {
   static const String notificationsScreen = '/notificationsScreen';
   static const String otpScreen = '/otpScreen';
   static const String homeScreen = '/homeScreen';
+  static const String recipientInfoScreen = '/recipientInfoScreen';
+  static const String shipmentInfoScreen = '/shipmentInfoScreen';
 }
