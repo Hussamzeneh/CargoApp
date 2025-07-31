@@ -10,4 +10,7 @@ abstract class Endpoints{
   static String announcement = '/image' ;
   static String getProducts = '/customer/product/all/viewed';
   static String getShipments = '/my-shipments';
+  static String addRecipientInfo = '/recipient';
+  static String addShipmentInfo = '/details';
+  static String shipmentInvoice = '/shipmentshow';
 }

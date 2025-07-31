@@ -13,6 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloceproject/Pages/sign_up_screen/sign_up.dart';
 
+import 'pages/add_shipment_screens/cubit/cubit.dart';
+
 void main() async {
   DioHelper.init();
   await StorageHelper.init();
@@ -22,34 +24,37 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: appRoutes,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          foregroundColor: Colors.white,
-          elevation: 1.5,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom:
-                  Radius.circular(20.0), // Apply 30px radius to bottom corners
+    return BlocProvider(
+      create: (context) => AddShipmentCubit(),
+      child: MaterialApp.router(
+        routerConfig: appRoutes,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          appBarTheme: const AppBarTheme(
+            foregroundColor: Colors.white,
+            elevation: 1.5,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(
+                    20.0), // Apply 30px radius to bottom corners
+              ),
             ),
           ),
+          fontFamily: 'tajawal',
+          primaryColor: Constants.primaryColor,
+          // scaffoldBackgroundColor: Colors.white70,
+          textTheme: const TextTheme(
+              titleLarge: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              bodyMedium: TextStyle(
+                fontSize: 14,
+              ),
+              bodySmall: TextStyle(
+                fontSize: 12,
+              )),
         ),
-        fontFamily: 'tajawal',
-        primaryColor: Constants.primaryColor,
-        // scaffoldBackgroundColor: Colors.white70,
-        textTheme: const TextTheme(
-            titleLarge: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            bodyMedium: TextStyle(
-              fontSize: 14,
-            ),
-            bodySmall: TextStyle(
-              fontSize: 12,
-            )),
-      ),
 
-      // home: OtpScreen(),
+        // home: OtpScreen(),
+      ),
     );
   }
 }

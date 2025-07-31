@@ -8,9 +8,6 @@ class AddShipmentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddShipmentCubit(),
-      child: const RecipientInfoScreen(),
-    );
+    return const RecipientInfoScreen();
   }
 }

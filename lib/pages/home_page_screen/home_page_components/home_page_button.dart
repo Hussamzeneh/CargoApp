@@ -7,11 +7,13 @@ class HomePageButton extends StatelessWidget {
     required this.color,
     required this.icon,
     required this.title,
+    required this.onTap,
   });
 
   final Color color;
   final IconData icon;
   final String title;
+  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +53,7 @@ class HomePageButton extends StatelessWidget {
     // );
     
     return InkWell(
-      onTap: (){},
+      onTap: onTap,
       child: Column(
         children: [
           Icon(icon, color: Theme.of(context).primaryColor, size: 32,),

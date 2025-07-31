@@ -1,4 +1,7 @@
 import 'package:bloceproject/Pages/Login_screen/login.dart';
+import 'package:bloceproject/pages/add_shipment_screens/add_shipment_screen.dart';
+import 'package:bloceproject/pages/add_shipment_screens/invoice_screen/invoice_screen.dart';
+import 'package:bloceproject/pages/add_shipment_screens/shipment_info_screen/shipment_info_screen.dart';
 import 'package:bloceproject/pages/home_page_screen/home_page.dart';
 import 'package:bloceproject/pages/notifications_screen/notifications_screen.dart';
 import 'package:bloceproject/pages/otp_screen/otp_screen.dart';
@@ -37,6 +40,20 @@ final GoRouter appRoutes = GoRouter(
     GoRoute(
       path: AppRoutes.notificationsScreen,
       builder: (context, state) => const NotificationsScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.addShipmentScreen,
+      builder: (context, state) => const AddShipmentScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.shipmentInfoScreen,
+      builder: (context, state) => const ShipmentInfoScreen(),
+    ),
+    GoRoute(
+      path: '${AppRoutes.invoiceScreen}/:id',
+      builder: (context, state) => InvoiceScreen(
+        id: state.pathParameters['id']!,
+      ),
     ),
   ],
   errorBuilder: (context, state) => Scaffold(

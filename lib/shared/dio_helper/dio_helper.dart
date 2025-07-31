@@ -1,5 +1,8 @@
+import 'package:bloceproject/shared/constants/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:bloceproject/shared/dio_helper/endpoints.dart';
+
+import '../../models/shipment_model.dart';
 
 class DioHelper {
   static late Dio dio;
@@ -7,7 +10,7 @@ class DioHelper {
   static init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'http://192.168.119.17:8000/api',
+        baseUrl: '${Constants.baseUrl}/api',
         receiveDataWhenStatusError: true,
       ),
     );
@@ -111,6 +114,73 @@ class DioHelper {
   }) async {
     return await dio.get(
       Endpoints.getShipments,
+      options: Options(
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        followRedirects: false,
+        validateStatus: (status) {
+          return true;
+        },
+      ),
+    );
+  }
+
+  static Future<Response> addRecipientInfo({
+    required String token,
+    required String recipientPhone,
+    required String recipientLat,
+    required String recipientLng,
+    required String recipientLocation,
+  }) async {
+    return await dio.post(
+      Endpoints.addRecipientInfo,
+      data: {
+        'recipient_phone': recipientPhone,
+        'recipient_lat': recipientLat,
+        'recipient_lng': recipientLng,
+        'recipient_location': recipientLocation,
+      },
+      options: Options(
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        followRedirects: false,
+        validateStatus: (status) {
+          return true;
+        },
+      ),
+    );
+  }
+
+  static Future<Response> addShipmentInfo({
+    required String token,
+    required ShipmentModel shipment,
+  }) async {
+    return await dio.post(
+      Endpoints.addShipmentInfo,
+      data: shipment.toJson(),
+      options: Options(
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        followRedirects: false,
+        validateStatus: (status) {
+          return true;
+        },
+      ),
+    );
+  }
+
+  static Future<Response> getShipmentInvoice({
+    required String token,
+    required String id,
+  }) async {
+    return await dio.get(
+      '${Endpoints.shipmentInvoice}/$id',
       options: Options(
         headers: {
           'Accept': 'application/json',

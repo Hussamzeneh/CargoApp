@@ -92,7 +92,7 @@ class LoginScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               ValidatedTextField(
-                                icon: Constants.emailIcon,
+                                icon: ConstIcons.emailIcon,
                                 controller: loginCubitObject
                                     .userTextController.emailController,
                                 validator: loginCubitObject
@@ -101,7 +101,7 @@ class LoginScreen extends StatelessWidget {
                                 hintText: 'email',
                               ),
                               ValidatedTextField(
-                                icon: Constants.lockIcon,
+                                icon: ConstIcons.lockIcon,
                                 obscureText: true,
                                 controller: loginCubitObject
                                     .userTextController.passwordController,

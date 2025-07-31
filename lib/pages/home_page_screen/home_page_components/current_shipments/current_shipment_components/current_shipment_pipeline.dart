@@ -90,7 +90,7 @@ class _CurrentShipmentPipelineState extends State<CurrentShipmentPipeline> {
           // ),
           EasyStepper(
             fitWidth: true,
-            activeStep: 2,
+            activeStep: widget.shipmentModel.status.activeStateIndex(),
             steps: currentShipmentSteps(stepRadius: stepRadius),
             stepShape: StepShape.circle,
             borderThickness: 2,

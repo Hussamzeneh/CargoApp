@@ -58,4 +58,27 @@ enum ShipmentStatus {
         return 'cancelled';
     }
   }
+
+  int activeStateIndex(){
+    switch (this) {
+      case ShipmentStatus.pending:
+        return 0;
+      case ShipmentStatus.offeredPickupDriver:
+        return 1;
+      case ShipmentStatus.pickedUp:
+        return 2;
+      case ShipmentStatus.inTransitBetweenCenters:
+        return 3;
+      case ShipmentStatus.arrivedAtDestinationCenter:
+        return 4;
+      case ShipmentStatus.offeredDeliveryDriver:
+        return 5;
+      case ShipmentStatus.outForDelivery:
+        return 6;
+      case ShipmentStatus.delivered:
+        return 7;
+      case ShipmentStatus.cancelled:
+        return 8;
+    }
+  }
 }
