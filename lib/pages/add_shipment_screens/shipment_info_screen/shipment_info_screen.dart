@@ -1,12 +1,12 @@
 import 'package:bloceproject/pages/add_shipment_screens/cubit/states.dart';
 import 'package:bloceproject/shared/component/customized_botton.dart';
 import 'package:bloceproject/shared/component/show_toast.dart';
-import 'package:bloceproject/shared/constants/app_routes/app_routes.dart';
+import 'package:bloceproject/shared/constants/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
-
 import '../../../shared/component/validated_text_field.dart';
 import '../../../shared/constants/constants.dart';
 import '../cubit/cubit.dart';
@@ -95,13 +95,13 @@ class ShipmentInfoScreen extends StatelessWidget {
                   onPressed: () async {
                     await cubit.addShipmentInfo();
                     if (cubit.state is AddShipmentSuccessState) {
-                      context.go(AppRoutes.homeScreen);
+                      Get.offNamed(AppRoutes.homeScreen);
                       showToast(
                           context: context,
                           text: 'shipment added successfully',
                           color: Constants.successColor);
                     } else if (cubit.state is AddShipmentErrorState) {
-                    final errorState = cubit.state as AddShipmentErrorState;
+                      final errorState = cubit.state as AddShipmentErrorState;
                       showToast(
                           context: context,
                           text: errorState.error,

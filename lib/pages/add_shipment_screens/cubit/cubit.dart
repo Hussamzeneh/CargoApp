@@ -8,6 +8,7 @@ import 'package:bloceproject/shared/constants/user_text_validators.dart';
 import 'package:bloceproject/shared/dio_helper/dio_helper.dart';
 import 'package:bloceproject/shared/storage/storage_helper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:latlong2/latlong.dart';
 
 class AddShipmentCubit extends Cubit<AddShipmentStates> {
   AddShipmentCubit() : super(AddShipmentInitialState());
@@ -20,14 +21,14 @@ class AddShipmentCubit extends Cubit<AddShipmentStates> {
   ShipmentTextValidators shipmentTextValidators = ShipmentTextValidators();
   late ShipmentModel shipmentInvoice;
 
-  addRecipientInfo() async {
+  addRecipientInfo({required LatLng recipientLocation}) async {
     emit(AddShipmentLoadingState());
     try {
       var response = await DioHelper.addRecipientInfo(
         token: StorageHelper.getUserToken()!,
         recipientPhone: userTextController.phoneController.text,
-        recipientLat: '36.216667',
-        recipientLng: '37.16668',
+        recipientLat: recipientLocation.latitude.toString(),
+        recipientLng: recipientLocation.longitude.toString(),
         recipientLocation: 'Jaramana',
       );
       print(response.data);
@@ -58,7 +59,8 @@ class AddShipmentCubit extends Cubit<AddShipmentStates> {
         token: StorageHelper.getUserToken()!,
         shipment: ShipmentModel(
           type: shipmentTextControllers.shipmentTypeController.text,
-          numberOfPieces: int.parse(shipmentTextControllers.numberOfPiecesController.text),
+          numberOfPieces:
+              int.parse(shipmentTextControllers.numberOfPiecesController.text),
           weight: shipmentTextControllers.weightController.text,
           productValue: shipmentTextControllers.productValueController.text,
           senderLat: '33.510414',

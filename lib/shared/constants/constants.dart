@@ -5,7 +5,7 @@ abstract class Constants {
   static Color primaryColor = Colors.pink[900]!;
   static Color successColor = Colors.green;
   static Color errorColor = Colors.red;
-  static String baseUrl = 'http://192.168.119.17:8000';
+  static String baseUrl = 'http://10.225.247.17:8000';
 }
 
 abstract class ConstIcons {

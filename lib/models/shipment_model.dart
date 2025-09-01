@@ -55,7 +55,7 @@ class ShipmentModel {
     totalAmount = json['total_amount'];
     invoiceNumber = json['invoice_number'];
     barcode = json['barcode'];
-    qrCodeUrl = '${Constants.baseUrl}/${json['qr_code_url']}';
+    qrCodeUrl = '${Constants.baseUrl}${json['qr_code_url']}';
     if (json['recipient'] != null) {
       print(json['recipient']);
       recipient = UserModel.fromJson(json['recipient']);

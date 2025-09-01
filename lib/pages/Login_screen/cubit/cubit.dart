@@ -34,6 +34,7 @@ class LoginScreenCubit extends Cubit<LoginScreenStates> {
         password: userTextController.passwordController.text,
         email: userTextController.emailController.text,
       );
+      print(loginResponse.data);
       if (loginResponse.statusCode == 200) {
         userModel = UserModel.fromJson(loginResponse.data['data']);
         StorageHelper.storeUser(userModel);

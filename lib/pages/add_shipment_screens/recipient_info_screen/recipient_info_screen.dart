@@ -1,27 +1,37 @@
 import 'package:bloceproject/pages/add_shipment_screens/cubit/cubit.dart';
 import 'package:bloceproject/pages/add_shipment_screens/cubit/states.dart';
+import 'package:bloceproject/pages/add_shipment_screens/recipient_info_screen/map_widget.dart';
 import 'package:bloceproject/shared/component/customized_botton.dart';
 import 'package:bloceproject/shared/component/show_toast.dart';
 import 'package:bloceproject/shared/component/validated_text_field.dart';
-import 'package:bloceproject/shared/constants/app_routes/app_routes.dart';
+import 'package:bloceproject/shared/constants/app_routes.dart';
 import 'package:bloceproject/shared/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:latlong2/latlong.dart';
 
 class RecipientInfoScreen extends StatelessWidget {
-  const RecipientInfoScreen({super.key});
+  const RecipientInfoScreen({
+    super.key,
+    required this.recipientLocation,
+  });
+
+  final LatLng recipientLocation;
 
   @override
   Widget build(BuildContext context) {
     var cubit = context.read<AddShipmentCubit>();
+    var screenHeight = MediaQuery.of(context).size.height;
+    var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: SingleChildScrollView(
           child: ConstrainedBox(
             constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height * 0.5,
+              maxHeight: screenHeight * 0.5,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -33,7 +43,9 @@ class RecipientInfoScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       IconButton(
-                        onPressed: () {context.go(AppRoutes.homeScreen);},
+                        onPressed: () {
+                          Get.offAllNamed(AppRoutes.homeScreen);
+                        },
                         icon: Icon(Icons.arrow_back),
                       ),
                       const Text('Add Shipment'),
@@ -63,6 +75,11 @@ class RecipientInfoScreen extends StatelessWidget {
                   hintText: 'email',
                   hasNextText: false,
                 ),
+                // SizedBox(
+                //   // height: screenHeight * 0.1,
+                //   // width:  screenWidth * 0.1,
+                //   child: MapWidget(),
+                // ),
                 CustomizedButton(
                   title: 'Next',
                   condition: cubit.state is! AddShipmentLoadingState,
@@ -75,7 +92,9 @@ class RecipientInfoScreen extends StatelessWidget {
                             .validate()) {
                       return;
                     }
-                    await cubit.addRecipientInfo();
+                    await cubit.addRecipientInfo(
+                      recipientLocation: recipientLocation,
+                    );
                     if (cubit.state is AddShipmentSuccessState) {
                       context.go(AppRoutes.shipmentInfoScreen);
                       final successState =

@@ -1,6 +1,9 @@
 //
+// import 'package:bloceproject/models/shipment_model.dart';
+// import 'package:bloceproject/shared/storage/storage_helper.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:get/get.dart';
 //
 // import '../validated_text_field.dart';
 // import 'cubit/cubit.dart';
@@ -47,7 +50,7 @@
 //                       ? search.searchByCategory(
 //                           title: search.searchController.text)
 //                       : search.search(
-//                           token: CashHelper.getUserToken()!,
+//                           token: StorageHelper.getUserToken()!,
 //                           searchText: search.searchController.text,
 //                           searchType: 'name');
 //                 }),
@@ -152,7 +155,7 @@
 //   final String medicineName;
 //   final String medicineCategory;
 //   final String imageLink;
-//   final MedicineModel model;
+//   final ShipmentModel model;
 //
 //   const SearchModelViewer(
 //       {Key? key,
@@ -173,14 +176,14 @@
 //         padding: const EdgeInsets.all(10.0),
 //         child: InkWell(
 //           onTap: () {
-//             navigateTo(context, MedicinePreviewScreen(medicineModel: model));
+//             // Get.toNamed(Approut)
 //           },
 //           child: Row(
 //             //mainAxisAlignment: MainAxisAlignment.end,
 //             crossAxisAlignment: CrossAxisAlignment.center,
 //             children: [
 //               Image.asset(
-//                 'images/medicine.png',
+//                 'assets/images/car.png',
 //                 width: imageSize,
 //                 height: imageSize,
 //               ),

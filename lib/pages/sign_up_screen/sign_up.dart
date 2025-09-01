@@ -5,15 +5,14 @@ import 'package:bloceproject/shared/component/circle_images.dart';
 import 'package:bloceproject/shared/component/customized_botton.dart';
 import 'package:bloceproject/shared/component/validated_text_field.dart';
 import 'package:bloceproject/shared/const/color.dart';
-import 'package:bloceproject/shared/constants/app_routes/app_router.dart';
-import 'package:bloceproject/shared/constants/app_routes/app_routes.dart';
+import 'package:bloceproject/shared/constants/app_routes.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
-
 import '../../shared/component/show_toast.dart';
 import '../../shared/constants/constants.dart';
 
@@ -33,8 +32,11 @@ class SignUp extends StatelessWidget {
               color: Constants.errorColor,
             );
           } else if (state is SignUpScreenSuccessState) {
-            context.go(
-                '${AppRoutes.otpScreen}/${SignUpScreenCubit.get(context).userTextController.emailController.text}');
+            Get.offNamed(AppRoutes.otpScreen,
+                arguments: SignUpScreenCubit.get(context)
+                    .userTextController
+                    .emailController
+                    .text);
             showToast(
               context: context,
               text: state.message,

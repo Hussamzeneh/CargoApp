@@ -1,8 +1,9 @@
 import 'package:bloceproject/models/shipment_model.dart';
 import 'package:bloceproject/pages/home_page_screen/home_page_components/current_shipments/current_shipment_components/current_shipment_pipeline.dart';
 import 'package:bloceproject/pages/home_page_screen/home_page_components/current_shipments/current_shipment_status/current_shipment_status.dart';
-import 'package:bloceproject/shared/constants/app_routes/app_routes.dart';
+import 'package:bloceproject/shared/constants/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 class CurrentShipmentWidget extends StatelessWidget {
@@ -17,7 +18,8 @@ class CurrentShipmentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.go('${AppRoutes.invoiceScreen}/${shipmentModel.id.toString()}');
+        Get.toNamed(AppRoutes.invoiceScreen,
+            arguments: shipmentModel.id.toString());
       },
       child: Container(
         decoration: BoxDecoration(

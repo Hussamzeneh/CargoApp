@@ -1,4 +1,5 @@
 //
+// import 'package:bloceproject/models/shipment_model.dart';
 // import 'package:bloceproject/shared/component/search_box/cubit/states.dart';
 // import 'package:flutter/foundation.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,11 +14,8 @@
 //   final searchValidator = GlobalKey<FormState>();
 //   final searchController = TextEditingController();
 //
-//   SearchModel? searchModel;
+//   List<ShipmentModel> shipmentModels = [];
 //
-//   CategoryModel? searchCategoryModel;
-//   List<MedicineModel> medicineModels = [];
-//   List<MyCategory> categoryModels = [];
 //
 //   bool searchForEmptyText() {
 //     bool searchForEmptyText = searchController.text == '';
@@ -25,7 +23,7 @@
 //     return searchForEmptyText;
 //   }
 //
-//   bool foundResults() {
+//   bool foundResults(var response) {
 //     bool foundResults = searchModel!.success == 1;
 //     emit(CheckForSearchResultsState());
 //     return foundResults;

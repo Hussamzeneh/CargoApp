@@ -1,9 +1,10 @@
 import 'package:bloceproject/pages/otp_screen/cubit/cubit.dart';
 import 'package:bloceproject/pages/otp_screen/cubit/states.dart';
-import 'package:bloceproject/shared/constants/app_routes/app_routes.dart';
+import 'package:bloceproject/shared/constants/app_routes.dart';
 import 'package:bloceproject/shared/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../shared/component/show_toast.dart';
@@ -29,7 +30,7 @@ class OtpScreen extends StatelessWidget {
               color: Constants.errorColor,
             );
           } else if (state is OtpScreenSuccessState) {
-            context.go(AppRoutes.loginScreen);
+            Get.offAllNamed(AppRoutes.loginScreen);
             showToast(
               context: context,
               text: state.message,

@@ -1,3 +1,4 @@
+import 'package:bloceproject/shared/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class InvoiceDetailsRowComponent extends StatelessWidget {
@@ -16,9 +17,18 @@ class InvoiceDetailsRowComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon),
-        Text(title),
-        Text(value),
+        Icon(
+          icon,
+          color: Constants.primaryColor,
+        ),
+        const SizedBox(
+          width: 5,
+        ),
+        Text(
+          '$title: ',
+          style: Theme.of(context).textTheme.labelMedium,
+        ),
+        Text(value, style: Theme.of(context).textTheme.labelMedium!.copyWith(color: Colors.grey[600]),),
       ],
     );
   }

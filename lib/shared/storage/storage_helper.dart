@@ -7,6 +7,7 @@ abstract class StorageHelper {
   static init() async {
     await GetStorage.init();
     _storage = GetStorage();
+    // _storage.remove('token');
   }
 
   static storeUser(UserModel user) {

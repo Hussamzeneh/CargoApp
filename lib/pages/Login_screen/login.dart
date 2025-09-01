@@ -1,12 +1,13 @@
 import 'package:bloceproject/Pages/Login_screen/cubit/states.dart';
 import 'package:bloceproject/shared/component/customized_botton.dart';
 import 'package:bloceproject/shared/component/validated_text_field.dart';
+import 'package:bloceproject/shared/constants/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 import '../../shared/component/show_toast.dart';
-import '../../shared/constants/app_routes/app_routes.dart';
 import '../../shared/constants/constants.dart';
 import 'cubit/cubit.dart';
 
@@ -26,7 +27,7 @@ class LoginScreen extends StatelessWidget {
               color: Constants.errorColor,
             );
           } else if (state is LoginScreenSuccessState) {
-            context.go(AppRoutes.homeScreen);
+            Get.offAllNamed(AppRoutes.homeScreen);
             showToast(
               context: context,
               text: state.message,
